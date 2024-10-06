@@ -24,8 +24,17 @@ public class AbrigoService {
         String responseBody = response.body();
         Abrigo[] abrigos = new ObjectMapper().readValue(responseBody, Abrigo[].class);
         List<Abrigo> abrigoList = Arrays.stream(abrigos).toList();
-        System.out.println("Abrigos cadastrados:");
-        for (Abrigo abrigo : abrigoList) {
+        if (abrigoList.isEmpty()) {
+            System.out.println("Nenhum abrigo cadastrado.");
+        } else {
+            mostrarbrigos(abrigoList);
+            System.out.println("Abrigos cadastrados:");
+
+        }
+    }
+
+    private void mostrarbrigos(List<Abrigo> abrigos) {
+        for (Abrigo abrigo : abrigos) {
             long id = abrigo.getId();
             String nome = abrigo.getNome();
             System.out.println(id + " - " + nome);
@@ -43,7 +52,7 @@ public class AbrigoService {
         Abrigo abrigo = new Abrigo(nome, telefone, email);
 
         String uri = "http://localhost:8080/abrigos";
-        HttpResponse<String> response = clientHttpConfig.disparaRequisicaoPost(uri, abrigo);
+        HttpResponse<String> response = clientHttpConfig.dispararRequisicaoPost(uri, abrigo);
         int statusCode = response.statusCode();
         String responseBody = response.body();
         if (statusCode == 200) {

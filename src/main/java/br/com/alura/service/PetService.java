@@ -44,7 +44,7 @@ public class PetService {
         }
     }
 
-    public void impotarPets() throws IOException, InterruptedException {
+    public void importarPets() throws IOException, InterruptedException {
         System.out.println("Digite o id ou nome do abrigo:");
         String idOuNome = new Scanner(System.in).nextLine();
 
@@ -70,7 +70,7 @@ public class PetService {
             Pet pet = new Pet(tipo, nome, raca, idade, cor, peso);
 
             String uri = "http://localhost:8080/abrigos/" + idOuNome + "/pets";
-            HttpResponse<String> response = clientHttpConfig.disparaRequisicaoPost(uri, pet);
+            HttpResponse<String> response = clientHttpConfig.dispararRequisicaoPost(uri, pet);
             int statusCode = response.statusCode();
             String responseBody = response.body();
             if (statusCode == 200) {

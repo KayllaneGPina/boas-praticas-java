@@ -36,7 +36,7 @@ public class AdopetConsoleApplication {
                 } else if (opcaoEscolhida == 3) {
                     petService.listarPets();
                 } else if (opcaoEscolhida == 4) {
-                    petService.impotarPets();
+                    petService.importarPets();
                 } else if (opcaoEscolhida == 5) {
                     break;
                 } else {
