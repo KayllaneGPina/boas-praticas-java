@@ -31,10 +31,8 @@ public class AdocaoService {
     private TutorRepository tutorRepository;
 
     @Autowired
-    private EmailService emailSender;
-
-    @Autowired
     private EmailService emailService;
+
     @Autowired
     private AdocaoRepository adocaoRepository;
 
